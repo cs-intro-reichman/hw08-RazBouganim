@@ -26,7 +26,7 @@ class PlayList {
     public Track getTrack(int index) {
         if (index >= 0 && index < size) {
             return tracks[index];
-        } else {
+        } else { // redundant else 
             return null;
         }
     }
@@ -55,7 +55,7 @@ class PlayList {
             String artist = tracks[i].getArtist();
             String title = tracks[i].getTitle();
             int duration = tracks[i].getDuration();
-            playList += "\n" + artist + ", " + title + ", " + duration;
+            playList += "\n" + artist + ", " + title + ", " + duration; // not good , you should have used StringBuilder
         }
         return playList;
     }
@@ -102,7 +102,7 @@ class PlayList {
         Track current = null;
         if (i < 0 || i > size || size == maxSize){
             return false;
-        }
+        } // redundant else 
         else{
             for (int j = size - 1; j >= i; j--){
                 tracks[j + 1] = tracks[j];
@@ -118,6 +118,10 @@ class PlayList {
      *  does nothing and returns -1. */
     public void remove(int i) {
         //// replace this comment with your code
+
+        /* We usually dont like to put the entire code function inside an if
+        we go on negation, if not the condition then return false, otherwise the code of the function. 
+        */
         if (!(size == 0 || i < 0 || i > size)){
             for (int j = i; j < size - 1; j++){
                 tracks[j] = tracks[j + 1];
@@ -158,7 +162,7 @@ class PlayList {
          int i = size;
          int j = 0;
          if (size + other.getSize() <= maxSize){
-             while (i <= size + other.getSize()){
+             while (i <= size + other.getSize()){ // very weird to use while, use for when dealing with indexes 
                  tracks[i] = other.tracks[j];
                  i++;
                  j++;
@@ -179,7 +183,7 @@ class PlayList {
         if (start < 0 || start > size - 1){
             return -1;
         }
-        else{
+        else{ // redundant else
             index = start;
             for (int i = start; i < size; i++){
                 if (tracks[index].getDuration() > tracks[i].getDuration()){
